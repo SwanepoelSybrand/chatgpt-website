@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ChatGPT Chatbot</title>
+    <style>
+        body { font-family: Arial, sans-serif; text-align: center; margin: 50px; }
+        #chatbox { width: 400px; height: 300px; overflow-y: auto; border: 1px solid #ccc; padding: 10px; margin: auto; }
+        input, button { margin-top: 10px; padding: 10px; width: 80%; }
+    </style>
+</head>
+<body>
+    <h1>Chat with ChatGPT</h1>
+    <div id="chatbox"></div>
+    <input type="text" id="userInput" placeholder="Type a message...">
+    <button onclick="sendMessage()">Send</button>
+
+    <script>
+        const API_KEY = "<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ChatGPT Chatbot</title>
+    <style>
+        body { font-family: Arial, sans-serif; text-align: center; margin: 50px; }
+        #chatbox { width: 400px; height: 300px; overflow-y: auto; border: 1px solid #ccc; padding: 10px; margin: auto; }
+        input, button { margin-top: 10px; padding: 10px; width: 80%; }
+    </style>
+</head>
+<body>
+    <h1>Chat with ChatGPT</h1>
+    <div id="chatbox"></div>
+    <input type="text" id="userInput" placeholder="Type a message...">
+    <button onclick="sendMessage()">Send</button>
+
+   <script>
+    async function sendMessage() {
+        let userText = document.getElementById("userInput").value;
+        if (!userText) return;
+
+        let chatbox = document.getElementById("chatbox");
+        chatbox.innerHTML += `<p><strong>You:</strong> ${userText}</p>`;
+
+        let response = await fetch("http://localhost:3000/chat", {  // Calls your backend
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({ message: userText })
+        });
+
+        let data = await response.json();
+        let botReply = data.reply;
+
+        chatbox.innerHTML += `<p><strong>Bot:</strong> ${botReply}</p>`;
+        document.getElementById("userInput").value = "";
+    }
+</script>
+
+</body>
+</html>
+";  // Replace with your OpenAI API key
+
+        async function sendMessage() {
+            let userText = document.getElementById("userInput").value;
+            if (!userText) return;
+
+            let chatbox = document.getElementById("chatbox");
+            chatbox.innerHTML += `<p><strong>You:</strong> ${userText}</p>`;
+
+            let response = await fetch("https://api.openai.com/v1/chat/completions", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                    "Authorization": `Bearer ${API_KEY}`
+                },
+                body: JSON.stringify({
+                    model: "gpt-3.5-turbo",
+                    messages: [{ role: "user", content: userText }]
+                })
+            });
+
+            let data = await response.json();
+            let botReply = data.choices[0].message.content;
+
+            chatbox.innerHTML += `<p><strong>Bot:</strong> ${botReply}</p>`;
+            document.getElementById("userInput").value = "";
+        }
+    </script>
+</body>
+</html>
