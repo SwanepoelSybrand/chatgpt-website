@@ -43,7 +43,7 @@
         let chatbox = document.getElementById("chatbox");
         chatbox.innerHTML += `<p><strong>You:</strong> ${userText}</p>`;
 
-        let response = await fetch("http://localhost:3000/chat", {  // Calls your backend
+        let response = await fetch("http://localhost:5000/chat", {  // Calls your backend
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
